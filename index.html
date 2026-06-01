@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hernan Silva</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f1e3c;
+  --navy-mid:#1a2f54;
+  --navy-light:#2a4070;
+  --gold:#c8a84b;
+  --gold-light:#e0c46e;
+  --gold-pale:#f5edcf;
+  --cream:#faf8f3;
+  --off-white:#f0ede4;
+  --text:#1a1a1a;
+  --text-muted:#5a5a5a;
+  --text-light:#8a8a8a;
+  --border:#e0ddd4;
+  --sans:'DM Sans',sans-serif;
+  --serif:'Cormorant Garamond',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--text);background:var(--cream);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,30,60,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,168,75,0.2)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:#fff;letter-spacing:0.08em;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:6px 18px;border-radius:3px;font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--gold-light)}
+.mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.mobile-menu-btn span{display:block;width:22px;height:2px;background:#fff;margin:4px 0;transition:0.3s}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden;padding-top:58px}
+.hero-bg-lines{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 0,transparent 80px),repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 0,transparent 80px)}
+.hero-gold-bar{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
+.hero-inner{max-width:1100px;margin:0 auto;padding:4rem 2rem;position:relative;z-index:1}
+.hero-eyebrow{font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;font-weight:500}
+.hero-name{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:#fff;line-height:1.05;margin-bottom:0.5rem}
+.hero-name em{font-style:italic;color:var(--gold-light)}
+.hero-title{font-family:var(--serif);font-size:clamp(1rem,2.2vw,1.5rem);font-weight:300;color:rgba(255,255,255,0.55);margin-bottom:2rem;letter-spacing:0.02em}
+.hero-desc{max-width:520px;color:rgba(255,255,255,0.65);font-size:0.95rem;line-height:1.8;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:12px 28px;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;text-decoration:none;border-radius:3px;transition:background 0.2s;font-family:var(--sans)}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-outline{border:1px solid rgba(200,168,75,0.5);color:rgba(255,255,255,0.8);padding:12px 28px;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:400;text-decoration:none;border-radius:3px;transition:all 0.2s;font-family:var(--sans)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;flex-wrap:wrap}
+.hero-stat{border-left:2px solid var(--gold);padding-left:1rem}
+.hero-stat .num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:#fff;line-height:1}
+.hero-stat .label{font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px}
+
+/* SECTIONS */
+section{padding:5rem 0}
+.section-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
+.section-eyebrow{font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;font-weight:500}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--navy);line-height:1.15;margin-bottom:1.5rem}
+.section-title em{font-style:italic}
+.divider{width:48px;height:2px;background:var(--gold);margin-bottom:2rem}
+
+/* STORY SECTION */
+.story-bg{background:var(--off-white)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.story-text p{color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem}
+.story-text p strong{color:var(--navy);font-weight:500}
+.story-aside{position:sticky;top:80px}
+.timeline{margin-top:1rem}
+.tl-item{display:flex;gap:1rem;margin-bottom:1.5rem}
+.tl-year{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--gold);min-width:50px;padding-top:2px}
+.tl-content{}
+.tl-title{font-weight:500;font-size:0.9rem;color:var(--navy)}
+.tl-desc{font-size:0.83rem;color:var(--text-muted);margin-top:2px}
+.tl-line{width:1px;background:var(--border);position:absolute}
+
+/* QUOTE BLOCK */
+blockquote.pull{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin:2rem 0;background:rgba(200,168,75,0.06);border-radius:0 4px 4px 0}
+blockquote.pull p{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:var(--navy);line-height:1.6}
+
+/* CIO LANDING */
+.cio-bg{background:var(--navy);color:#fff}
+.cio-bg .section-title{color:#fff}
+.cio-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start}
+.cio-text p{color:rgba(255,255,255,0.65);margin-bottom:1.2rem;font-size:0.95rem}
+.cio-text p strong{color:#fff;font-weight:500}
+.metric-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.metric-card{background:rgba(255,255,255,0.06);border:1px solid rgba(200,168,75,0.2);border-radius:6px;padding:1.25rem}
+.metric-card .num{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--gold)}
+.metric-card .lbl{font-size:0.75rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+.services-list{margin-top:1.5rem}
+.service-item{display:flex;gap:0.75rem;align-items:flex-start;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.07)}
+.service-item:last-child{border-bottom:none}
+.service-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:7px;flex-shrink:0}
+.service-text{font-size:0.88rem;color:rgba(255,255,255,0.65)}
+.service-text strong{color:#fff;display:block;font-weight:500;margin-bottom:2px}
+
+/* FAMILY */
+.family-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.family-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.75rem;position:relative}
+.family-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);border-radius:8px 8px 0 0}
+.family-icon{font-size:1.8rem;margin-bottom:1rem}
+.family-name{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--navy);margin-bottom:0.5rem}
+.family-desc{font-size:0.88rem;color:var(--text-muted);line-height:1.7}
+
+/* HOBBIES */
+.hobbies-bg{background:var(--off-white)}
+.hobbies-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.hobby-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.5rem;text-align:center;transition:border-color 0.2s,transform 0.2s}
+.hobby-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.hobby-emoji{font-size:2rem;margin-bottom:0.75rem;display:block}
+.hobby-name{font-weight:500;font-size:0.9rem;color:var(--navy);margin-bottom:0.4rem}
+.hobby-desc{font-size:0.8rem;color:var(--text-muted)}
+
+/* BLOG */
+.blog-tabs{display:flex;gap:0;margin-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.tab-btn{padding:10px 22px;font-size:0.85rem;font-weight:500;color:var(--text-muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;letter-spacing:0.02em;font-family:var(--sans)}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--gold)}
+.tab-btn:hover:not(.active){color:var(--navy)}
+.tab-content{display:none}
+.tab-content.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.post-card{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:box-shadow 0.2s}
+.post-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+.post-img-placeholder{height:140px;background:var(--off-white);display:flex;align-items:center;justify-content:center;font-size:2rem;border-bottom:1px solid var(--border)}
+.post-body{padding:1.25rem}
+.post-tag{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);font-weight:500;margin-bottom:0.5rem}
+.post-title{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--navy);margin-bottom:0.5rem;line-height:1.4}
+.post-excerpt{font-size:0.83rem;color:var(--text-muted);line-height:1.6}
+.post-meta{margin-top:1rem;font-size:0.75rem;color:var(--text-light);display:flex;gap:1rem}
+.post-date::before{content:''}
+
+/* CONTACT */
+.contact-bg{background:var(--navy)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.contact-bg .section-title{color:#fff}
+.contact-bg .section-eyebrow{color:var(--gold)}
+.contact-desc{color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:0.75rem}
+.contact-link{display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+.contact-link:hover{color:var(--gold)}
+.contact-link-icon{width:36px;height:36px;border:1px solid rgba(200,168,75,0.3);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:border-color 0.2s}
+.contact-link:hover .contact-link-icon{border-color:var(--gold)}
+.contact-form-area{background:rgba(255,255,255,0.05);border:1px solid rgba(200,168,75,0.15);border-radius:8px;padding:2rem}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:10px 14px;color:#fff;font-family:var(--sans);font-size:0.9rem;outline:none;transition:border-color 0.2s}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.25)}
+.form-group input:focus,.form-group textarea:focus{border-color:rgba(200,168,75,0.5)}
+.form-group textarea{resize:vertical;min-height:90px}
+
+/* FOOTER */
+footer{background:var(--navy-mid);border-top:1px solid rgba(200,168,75,0.12);padding:2rem 0}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:rgba(255,255,255,0.8)}
+.footer-logo span{color:var(--gold)}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.35)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+
+/* SCROLL ANIMATE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* MOBILE MENU */
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--navy);z-index:99;padding:80px 2rem 2rem;flex-direction:column;gap:1rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:1.1rem;font-family:var(--serif);padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.07)}
+.mobile-nav a:hover{color:var(--gold)}
+
+/* PHOTO PLACEHOLDER */
+.photo-placeholder{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,var(--navy-light) 0%,var(--navy) 100%);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;border:1px solid rgba(200,168,75,0.2)}
+.photo-placeholder span{color:rgba(255,255,255,0.25);font-size:0.8rem;text-align:center;line-height:1.5}
+.photo-placeholder .photo-icon{font-size:2.5rem;opacity:0.2}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .story-grid,.cio-grid,.contact-inner,.family-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  .metric-cards{grid-template-columns:1fr 1fr}
+  .nav-links,.nav-cta{display:none}
+  .mobile-menu-btn{display:block}
+  .story-aside{position:static}
+  .tab-content.active{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Hernan <span>Silva</span></a>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#ciolanding">CIO Landing</a></li>
+      <li><a href="#family">Family</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#story" onclick="toggleMenu()">Story</a>
+  <a href="#ciolanding" onclick="toggleMenu()">CIO Landing</a>
+  <a href="#family" onclick="toggleMenu()">Family</a>
+  <a href="#hobbies" onclick="toggleMenu()">Hobbies</a>
+  <a href="#blog" onclick="toggleMenu()">Blog</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-gold-bar"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Entrepreneur · Technology Leader · Chicago, IL</p>
+    <h1 class="hero-name">Hernan<br><em>Silva</em></h1>
+    <p class="hero-title">Co-Owner, CIO Landing · MSP Founder · EO Chicago Member</p>
+    <p class="hero-desc">From Buenos Aires to Chicago. I build things that work — businesses, teams, systems. I've been running a managed IT services company in the Chicago area for over a decade, and I'm still learning something new every week.</p>
+    <div class="hero-btns">
+      <a href="#story" class="btn-primary">My Story</a>
+      <a href="#ciolanding" class="btn-outline">CIO Landing</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">1992</div>
+        <div class="label">In IT Since</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">Chicago</div>
+        <div class="label">Home Base</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-bg" id="story">
+  <div class="section-inner">
+    <div class="section-eyebrow">My Story</div>
+    <h2 class="section-title">From <em>Buenos Aires</em><br>to Chicago</h2>
+    <div class="divider"></div>
+    <div class="story-grid">
+      <div class="story-text">
+        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--navy);margin-bottom:1rem">Growing Up in Argentina</h3>
+        <p>I grew up in Buenos Aires, Argentina — a city that teaches you to be resourceful early. Life there shaped how I think: you solve problems with what you have, you move fast, and you don't wait for perfect conditions.</p>
+        <p>My family was central to everything. My brother and I were close growing up, and that relationship — the hustle, the conversations, the shared ambition — planted the seed for my entrepreneurial path. We both understood early on that if you wanted something, you had to go build it.</p>
+
+        <blockquote class="pull">
+          <p>"You don't wait for perfect conditions. You build with what you have, and you improve as you go."</p>
+        </blockquote>
+
+        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--navy);margin:2rem 0 1rem">First Steps in Business</h3>
+        <p>Before I ever landed in the United States, I was already running a business in Argentina. That experience taught me the fundamentals that still guide me today: margins matter, clients remember how you make them feel, and the only way to grow is to hire people smarter than you in specific areas.</p>
+        <p><strong>My first venture</strong> wasn't in IT — it was the kind of business you start when opportunity meets necessity. It didn't scale forever, but it gave me the confidence that I could figure things out. That confidence was the real asset I carried into the next chapter.</p>
+
+        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--navy);margin:2rem 0 1rem">The Move to the USA</h3>
+        <p>Moving to the United States was the biggest decision I've made. New country, new language, new rules. I arrived in the Chicago area and quickly understood that adapting wasn't optional — it was the only way forward.</p>
+        <p>English was and still is something I work on deliberately. I record my meetings with Krisp, I run transcripts through AI analysis, I work with a speech therapist, and I track my fluency scores over time. I don't pretend to be further along than I am. I treat my own English improvement the same way I treat any business problem: measure it, find the highest-leverage weakness, and drill that one thing.</p>
+        <p><strong>The early years in Chicago</strong> included different jobs and roles — always in technology-adjacent spaces, always learning the market, always building relationships. Each step was a brick in the foundation for what became CIO Landing.</p>
+
+        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--navy);margin:2rem 0 1rem">Building in Chicago</h3>
+        <p>The Chicago area became home in every sense. Northbrook is where my family lives, where my daughters go to school, where I sit on the HOA board at our building on West Hutchinson, where I'm active in the Entrepreneurs' Organization. The city gave me my business and my community. I gave it back by showing up.</p>
+        <p>I'm a member of <strong>EO Chicago</strong> — Entrepreneurs' Organization — where I've given and listened to talks, participated in the 5% Reflection practice, and built relationships with other founders who understand what it means to carry a business on your back while also trying to be a good parent and partner.</p>
+      </div>
+
+      <div class="story-aside">
+        <div class="photo-placeholder" style="margin-bottom:2rem">
+          <div class="photo-icon">📷</div>
+          <span>Photo coming soon<br>Buenos Aires, Argentina</span>
+        </div>
+
+        <div class="timeline">
+          <div class="tl-item fade-in">
+            <div class="tl-year">1980s</div>
+            <div class="tl-content">
+              <div class="tl-title">Buenos Aires, Argentina</div>
+              <div class="tl-desc">Grew up in Argentina; early entrepreneurial mindset shaped by family and environment</div>
+            </div>
+          </div>
+          <div class="tl-item fade-in">
+            <div class="tl-year">1990s</div>
+            <div class="tl-content">
+              <div class="tl-title">First Business Venture</div>
+              <div class="tl-desc">Started first business in Argentina; learned fundamentals of running a company</div>
+            </div>
+          </div>
+          <div class="tl-item fade-in">
+            <div class="tl-year">2000s</div>
+            <div class="tl-content">
+              <div class="tl-title">Move to the United States</div>
+              <div class="tl-desc">Relocated to Chicago area; started building in the US technology market</div>
+            </div>
+          </div>
+          <div class="tl-item fade-in">
+            <div class="tl-year">2012</div>
+            <div class="tl-content">
+              <div class="tl-title">CIO Landing Founded</div>
+              <div class="tl-desc">Launched the MSP that would become CIO Landing; early days of building recurring revenue</div>
+            </div>
+          </div>
+          <div class="tl-item fade-in">
+            <div class="tl-year">2013</div>
+            <div class="tl-content">
+              <div class="tl-title">Strategic Merger</div>
+              <div class="tl-desc">Merged with JC; CIO Landing's lineage formalized</div>
+            </div>
+          </div>
+          <div class="tl-item fade-in">
+            <div class="tl-year">2023</div>
+            <div class="tl-content">
+              <div class="tl-title">Acquired BSSI2</div>
+              <div class="tl-desc">CIO Landing acquires BSSI2, expanding capabilities and client base</div>
+            </div>
+          </div>
+          <div class="tl-item fade-in">
+            <div class="tl-year">Today</div>
+            <div class="tl-content">
+              <div class="tl-title">Northbrook, IL</div>
+              <div class="tl-desc">EO Chicago member, HOA board, family in the Chicago metro</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIO LANDING -->
+<section class="cio-bg" id="ciolanding">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Business</div>
+    <h2 class="section-title">CIO Landing —<br><em>How We Built It</em></h2>
+    <div class="divider"></div>
+    <div class="cio-grid">
+      <div class="cio-text">
+        <p>CIO Landing started in 2012 out of a simple belief: <strong>small and mid-sized businesses in the Chicago area deserved enterprise-level IT support without the enterprise price tag.</strong> I'd seen the gap. I knew I could close it.</p>
+        <p>The company merged in 2013 with JC, which gave us additional depth, processes, and clients. That early history shaped the operational DNA of what CIO Landing is today: a team that takes client relationships seriously and runs on recurring managed-service contracts.</p>
+        <p>Over more than a decade, we grew from a startup into a <strong>stable, growing business</strong> with a diversified client base, tight operating margins, and a technical team built to deliver. In 2023 we acquired <strong>BSSI2</strong>, expanding our capabilities and client base further. We serve small and mid-sized businesses across the Chicago metro — handling everything from day-to-day IT support to cybersecurity advisory, cloud infrastructure, and compliance work.</p>
+
+        <blockquote class="pull" style="border-left-color:var(--gold-light);background:rgba(200,168,75,0.08)">
+          <p style="color:rgba(255,255,255,0.85)">"We built CIO Landing to be what a small business's internal IT department would be — if they could afford a great one."</p>
+        </blockquote>
+
+        <p>What I'm most proud of is the team. Running an MSP means being on call when something breaks at 10pm on a Friday — and our people show up. That culture of reliability is not an accident. It's built through hiring carefully, communicating clearly, and setting expectations that we then consistently meet.</p>
+        <p>Today I'm also exploring what the next chapter looks like — whether that's continued organic growth, strategic partnerships, or evaluating acquisition opportunities. The MSP market is consolidating fast. We intend to be deliberate about how we move in that environment.</p>
+
+        <div class="services-list">
+          <div class="service-item fade-in">
+            <div class="service-dot"></div>
+            <div class="service-text"><strong>Managed IT Services</strong>Day-to-day support, monitoring, and helpdesk for SMBs across Chicago metro</div>
+          </div>
+          <div class="service-item fade-in">
+            <div class="service-dot"></div>
+            <div class="service-text"><strong>Cybersecurity Advisory</strong>Risk assessments, cyber insurance prep, and ongoing security posture management</div>
+          </div>
+          <div class="service-item fade-in">
+            <div class="service-dot"></div>
+            <div class="service-text"><strong>Cloud Infrastructure</strong>Microsoft 365, Azure, and hybrid cloud environments built and managed</div>
+          </div>
+          <div class="service-item fade-in">
+            <div class="service-dot"></div>
+            <div class="service-text"><strong>AI & Automation</strong>Helping clients understand and adopt AI tools that actually move their business forward</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="photo-placeholder" style="margin-bottom:2rem;background:linear-gradient(160deg,rgba(200,168,75,0.1) 0%,rgba(15,30,60,0.6) 100%)">
+          <div class="photo-icon" style="opacity:0.3">🏢</div>
+          <span style="color:rgba(255,255,255,0.3)">CIO Landing HQ<br>Chicago Area</span>
+        </div>
+        <div class="metric-cards">
+          <div class="metric-card fade-in">
+            <div class="num">2023</div>
+            <div class="lbl">Acquired BSSI2</div>
+          </div>
+          <div class="metric-card fade-in">
+            <div class="num">1992</div>
+            <div class="lbl">In IT Since</div>
+          </div>
+          <div class="metric-card fade-in">
+            <div class="num">2012</div>
+            <div class="lbl">Year Founded</div>
+          </div>
+          <div class="metric-card fade-in">
+            <div class="num">100%</div>
+            <div class="lbl">Recurring Revenue</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;padding:1.25rem;border:1px solid rgba(200,168,75,0.2);border-radius:6px;background:rgba(200,168,75,0.05)">
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.75rem">Recognized by</p>
+          <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.7">Entrepreneurs' Organization (EO) Chicago member · Active in the Chicago MSP and technology community · HubSpot partner for sales & marketing automation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section id="family">
+  <div class="section-inner">
+    <div class="section-eyebrow">Family</div>
+    <h2 class="section-title">The People<br><em>Who Matter Most</em></h2>
+    <div class="divider"></div>
+    <p class="fade-in" style="max-width:600px;color:var(--text-muted);margin-bottom:3rem;font-size:0.95rem">Family isn't a balance I try to achieve against work. It's the reason the work matters. Every decision — business, financial, personal — runs through the lens of what's best for them.</p>
+    <div class="family-grid">
+      <div class="family-card fade-in">
+        <div class="family-icon">💛</div>
+        <div class="family-name">Andrea</div>
+        <div class="family-desc">My wife and partner in everything. She holds the family together with a warmth and steadiness I genuinely admire. Fourteen-plus years of business, two kids, one immigrant adventure, and she's still the first person I want to talk to.</div>
+      </div>
+      <div class="family-card fade-in">
+        <div class="family-icon">⭐</div>
+        <div class="family-name">Tina</div>
+        <div class="family-desc">Rising 6th grader at Wood Oaks, sharp and curious. Watching her navigate school, friends, and the world with the same energy I remember having at that age — it's one of the best things I get to witness.</div>
+      </div>
+      <div class="family-card fade-in">
+        <div class="family-icon">🌟</div>
+        <div class="family-name">Viky</div>
+        <div class="family-desc">Working on her English through programs like Kodland — and taking it seriously. She's got focus beyond her years. I see a lot of myself in her approach to learning: methodical, determined, not afraid to ask questions.</div>
+      </div>
+    </div>
+    <div style="margin-top:3rem;padding:2rem;background:var(--off-white);border-radius:8px;border-left:4px solid var(--gold)">
+      <p style="font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--navy);line-height:1.7">"Every business decision eventually comes back to this: what does this mean for the family? That's not a constraint — it's a compass."</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section class="hobbies-bg" id="hobbies">
+  <div class="section-inner">
+    <div class="section-eyebrow">Outside the Office</div>
+    <h2 class="section-title">How I<br><em>Recharge</em></h2>
+    <div class="divider"></div>
+    <div class="hobbies-grid">
+      <div class="hobby-card fade-in">
+        <span class="hobby-emoji">🤖</span>
+        <div class="hobby-name">AI & Technology</div>
+        <div class="hobby-desc">Staying ahead of AI tools isn't just work — I genuinely find it fascinating. Claude, Krisp, Google Cloud, automation workflows. I experiment constantly.</div>
+      </div>
+      <div class="hobby-card fade-in">
+        <span class="hobby-emoji">🏡</span>
+        <div class="hobby-name">Home Projects</div>
+        <div class="hobby-desc">DIY work around the house — window caulking, electrical, whatever needs doing. I like solving problems with my hands as much as with a spreadsheet.</div>
+      </div>
+      <div class="hobby-card fade-in">
+        <span class="hobby-emoji">✈️</span>
+        <div class="hobby-name">Family Travel</div>
+        <div class="hobby-desc">Exploring the world with Andrea and the girls. We fly out of O'Hare and try to make at least one big family trip a year. The planning is half the fun.</div>
+      </div>
+      <div class="hobby-card fade-in">
+        <span class="hobby-emoji">📣</span>
+        <div class="hobby-name">EO Chicago</div>
+        <div class="hobby-desc">Entrepreneurs' Organization keeps me connected to people building real things. I give talks, listen to others, and practice the 5% Reflection. It's one of the best investments of time I make.</div>
+      </div>
+      <div class="hobby-card fade-in">
+        <span class="hobby-emoji">🏘️</span>
+        <div class="hobby-name">Community</div>
+        <div class="hobby-desc">HOA board member at our 24-unit building on West Hutchinson. I show up to the things that matter in my community, even when they're unglamorous.</div>
+      </div>
+      <div class="hobby-card fade-in">
+        <span class="hobby-emoji">🗣️</span>
+        <div class="hobby-name">English Improvement</div>
+        <div class="hobby-desc">I treat my own language learning like a project: speech therapy, ELSA Speak, AI transcript analysis, fluency tracking. Spanish is home, English is the mission.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="section-eyebrow">Writing</div>
+    <h2 class="section-title">The<br><em>Blog</em></h2>
+    <div class="divider"></div>
+    <p style="color:var(--text-muted);margin-bottom:2rem;font-size:0.95rem;max-width:550px">I write about three things: artificial intelligence and where it's going, IT and managed services, and personal reflections on business, family, and growth. Pick your topic.</p>
+
+    <div class="blog-tabs">
+      <button class="tab-btn active" onclick="switchTab('ai',this)">AI & Automation</button>
+      <button class="tab-btn" onclick="switchTab('it',this)">IT & MSP</button>
+      <button class="tab-btn" onclick="switchTab('personal',this)">Personal</button>
+    </div>
+
+    <!-- AI TAB -->
+    <div class="tab-content active" id="tab-ai">
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">🤖</div>
+        <div class="post-body">
+          <div class="post-tag">AI & Automation</div>
+          <div class="post-title">How I Built a Ten-Agent AI Marketing Team for My MSP</div>
+          <div class="post-excerpt">Most small businesses think AI is something Fortune 500 companies use. I built a ten-agent marketing system for a Chicago-area MSP. Here's how — and what I learned.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">💬</div>
+        <div class="post-body">
+          <div class="post-tag">AI & Automation</div>
+          <div class="post-title">Using Claude and Krisp to Improve My English — A Real Workflow</div>
+          <div class="post-excerpt">I record every meeting, run transcripts through AI, track fluency scores over time, and drill specific weaknesses. This is the exact system I use.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">🔍</div>
+        <div class="post-body">
+          <div class="post-tag">AI & Automation</div>
+          <div class="post-title">GEO: Getting Your MSP Cited by ChatGPT and Claude</div>
+          <div class="post-excerpt">SEO is about ranking on Google. GEO is about being recommended by AI. The tactics are different, and most MSPs are ignoring this entirely.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IT TAB -->
+    <div class="tab-content" id="tab-it">
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">🔐</div>
+        <div class="post-body">
+          <div class="post-tag">IT & MSP</div>
+          <div class="post-title">Cyber Insurance Is Changing — What Your MSP Needs to Know</div>
+          <div class="post-excerpt">I recently reviewed cyber insurance quotes for a law firm client. The requirements have tightened significantly. Here's what insurers are actually looking for now.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">📊</div>
+        <div class="post-body">
+          <div class="post-tag">IT & MSP</div>
+          <div class="post-title">The MSP M&A Wave: What Owners Need to Understand Before It Hits Them</div>
+          <div class="post-excerpt">Private equity is buying MSPs at a pace most owners haven't seen before. If you're not thinking about your options, someone else is already thinking about yours.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">🖥️</div>
+        <div class="post-body">
+          <div class="post-tag">IT & MSP</div>
+          <div class="post-title">IT for Small Businesses: What You're Probably Paying For That You Don't Need</div>
+          <div class="post-excerpt">After a decade running an MSP, I've seen the same mistakes over and over. Here's a no-jargon breakdown of what actually matters versus what vendors upsell you on.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONAL TAB -->
+    <div class="tab-content" id="tab-personal">
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">🇦🇷</div>
+        <div class="post-body">
+          <div class="post-tag">Personal</div>
+          <div class="post-title">What Buenos Aires Taught Me About Running a Business in America</div>
+          <div class="post-excerpt">Growing up in Argentina in the 80s and 90s meant learning resourcefulness by necessity. That same muscle is what I rely on every week running CIO Landing.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">🌱</div>
+        <div class="post-body">
+          <div class="post-tag">Personal</div>
+          <div class="post-title">Learning English at 40-Something: How I'm Treating Myself as a Case Study</div>
+          <div class="post-excerpt">I'm a non-native English speaker running a US business. I don't hide that — I track it, measure it, and improve it systematically. Here's the approach.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+      <div class="post-card fade-in">
+        <div class="post-img-placeholder">👨‍👩‍👧‍👧</div>
+        <div class="post-body">
+          <div class="post-tag">Personal</div>
+          <div class="post-title">Family First Is Not a Cliché — It's an Operating System</div>
+          <div class="post-excerpt">Every time I've let "family first" become a slogan rather than a filter, I've made worse decisions. Here's how I actually apply it when things get complicated.</div>
+          <div class="post-meta"><span class="post-date">Coming Soon</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div>
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2 class="section-title">Let's Have<br><em>a Conversation</em></h2>
+        <div class="divider"></div>
+        <p class="contact-desc">Whether it's a business conversation, a collaboration, or just a question about IT, AI, or the MSP world — I'm happy to talk. I respond to every genuine message.</p>
+        <div class="contact-links">
+          <a href="mailto:hsilva@ciolanding.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            hsilva@ciolanding.com
+          </a>
+          <a href="https://www.linkedin.com/in/hernansilva" target="_blank" class="contact-link">
+            <div class="contact-link-icon">🔗</div>
+            LinkedIn — Hernan Silva
+          </a>
+          <a href="https://ciolanding.com" target="_blank" class="contact-link">
+            <div class="contact-link-icon">🌐</div>
+            ciolanding.com
+          </a>
+          <a href="#" class="contact-link">
+            <div class="contact-link-icon">📅</div>
+            Schedule a Call
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-area">
+        <p style="font-family:var(--serif);font-size:1.2rem;color:rgba(255,255,255,0.85);margin-bottom:1.25rem;font-style:italic">Send a message</p>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="What's on your mind?"></textarea>
+        </div>
+        <button onclick="handleSubmit()" class="btn-primary" style="width:100%;cursor:pointer;border:none;padding:12px">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hernan <span>Silva</span></div>
+    <div class="footer-copy">© 2026 Hernan Silva · Northbrook, Illinois</div>
+    <div class="footer-links">
+      <a href="https://ciolanding.com">CIO Landing</a>
+      <a href="mailto:hsilva@ciolanding.com">Email</a>
+      <a href="https://www.linkedin.com/in/hernansilva">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileNav');
+  m.classList.toggle('open');
+}
+
+function switchTab(tab,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+tab).classList.add('active');
+}
+
+function handleSubmit(){
+  alert('Thank you for your message! Hernan will be in touch soon.');
+}
+
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible')}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  nav.style.background=window.scrollY>50?'rgba(15,30,60,0.99)':'rgba(15,30,60,0.97)';
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>
