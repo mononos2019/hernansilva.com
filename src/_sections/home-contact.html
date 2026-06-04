@@ -26,21 +26,22 @@
         <p style="font-family:var(--serif);font-size:1.2rem;color:rgba(255,255,255,0.85);margin-bottom:1.25rem;font-style:italic">Send a message</p>
         <div class="form-group">
           <label>Your Name</label>
-          <input type="text" placeholder="Full name">
+          <input type="text" id="cf-name" name="name" placeholder="Full name">
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="email" placeholder="your@email.com">
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com">
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="What's on your mind?"></textarea>
+          <textarea id="cf-message" name="message" placeholder="What's on your mind?"></textarea>
         </div>
         <div class="form-group">
           <label>Quick check: <span id="captcha-q">what is 0 + 0?</span></label>
           <input type="text" id="captcha-input" placeholder="Your answer" inputmode="numeric" autocomplete="off">
         </div>
-        <button onclick="handleSubmit()" class="btn-primary" style="width:100%;cursor:pointer;border:none;padding:12px">Send Message</button>
+        <button id="cf-submit" onclick="handleSubmit()" class="btn-primary" style="width:100%;cursor:pointer;border:none;padding:12px">Send Message</button>
+        <p id="cf-status" style="margin-top:0.75rem;font-size:0.85rem;color:rgba(255,255,255,0.7);min-height:1.2em"></p>
       </div>
     </div>
   </div>

@@ -309,15 +309,46 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(200,168,75,0.12);pad
     function handleSubmit() {
       var ci = document.getElementById('captcha-input');
       var ans = ci ? parseInt(ci.value, 10) : NaN;
+      var status = document.getElementById('cf-status');
       if (ans !== window._captchaAnswer) {
-        alert('Please answer the verification question correctly.');
+        if (status) { status.style.color = '#e0844b'; status.textContent = 'Please answer the verification question correctly.'; }
         setCaptcha();
         if (ci) ci.value = '';
         return;
       }
-      alert('Thank you for your message! Hernan will be in touch soon.');
-      setCaptcha();
-      if (ci) ci.value = '';
+      var nameEl = document.getElementById('cf-name');
+      var emailEl = document.getElementById('cf-email');
+      var msgEl = document.getElementById('cf-message');
+      var name = nameEl ? nameEl.value.trim() : '';
+      var email = emailEl ? emailEl.value.trim() : '';
+      var message = msgEl ? msgEl.value.trim() : '';
+      if (!name || !email || !message) {
+        if (status) { status.style.color = '#e0844b'; status.textContent = 'Please fill in your name, email, and message.'; }
+        return;
+      }
+      var btn = document.getElementById('cf-submit');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+      if (status) { status.style.color = 'rgba(255,255,255,0.7)'; status.textContent = 'Sending...'; }
+      fetch('https://formspree.io/f/mdavkzlj', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, message: message })
+      }).then(function (res) {
+        if (res.ok) {
+          if (status) { status.style.color = '#7bc47f'; status.textContent = 'Thanks! Your message has been sent.'; }
+          if (nameEl) nameEl.value = '';
+          if (emailEl) emailEl.value = '';
+          if (msgEl) msgEl.value = '';
+        } else {
+          if (status) { status.style.color = '#e0844b'; status.textContent = 'Something went wrong. Please email hsilva@ciolanding.com directly.'; }
+        }
+      }).catch(function () {
+        if (status) { status.style.color = '#e0844b'; status.textContent = 'Something went wrong. Please email hsilva@ciolanding.com directly.'; }
+      }).finally(function () {
+        if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+        setCaptcha();
+        if (ci) ci.value = '';
+      });
     }
     setCaptcha();
     window.toggleMenu = toggleMenu;
