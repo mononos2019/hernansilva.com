@@ -20,10 +20,6 @@
             <div class="contact-link-icon">🌐</div>
             ciolanding.com
           </a>
-          <a href="#" class="contact-link">
-            <div class="contact-link-icon">📅</div>
-            Schedule a Call
-          </a>
         </div>
       </div>
       <div class="contact-form-area">
@@ -40,9 +36,8 @@
           <label>Message</label>
           <textarea placeholder="What's on your mind?"></textarea>
         </div>
-        <button onclick="handleSubmit()" class="btn-primary" style="width:100%;cursor:pointer;border:none;padding:12px">Send Message</button>
-      </div>
-    </div>
-  </div>
-</section>
-
+        <div class="form-group">
+          <label>Quick check: <span id="captcha-q">what is 0 + 0?</span></label>
+          <input type="text" id="captcha-input" placeholder="Your answer" inputmode="numeric" autocomplete="off">
+        </div>
+        <button onclick="handleSubmit()" class="btn-primary" style="width:100%;cursor
