@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import topHtml from '../_sections/home-top.html?raw';
+import contactHtml from '../_sections/home-contact.html?raw';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<Base>
+  <Fragment set:html={topHtml} />
+
+  <!-- LATEST ARTICLES -->
+  <section id="blog">
+    <div class="section-inner">
+      <div class="section-eyebrow">Writing</div>
+      <h2 class="section-title">From the <em>Blog</em></h2>
+      <div class="divider"></div>
+      <p style="color:var(--text-muted);margin-bottom:2rem;font-size:0.95rem;max-width:550px">
+        Short pieces on AI and automation, IT and managed services, and the occasional personal reflection.
+      </p>
+      <div class="post-grid">
+        {posts.map((post) => (
+          <div class="post-card fade-in">
+            <a href={`/blog/${post.slug}`} class="post-link">
+              <img class="post-img" src={post.data.image} alt={post.data.title} loading="lazy" />
+              <div class="post-body">
+                <div class="post-tag">{post.data.category}</div>
+                <div class="post-title">{post.data.title}</div>
+                <div class="post-excerpt">{post.data.excerpt}</div>
+                <div class="post-meta"><span class="post-date">{fmt(post.data.date)}</span></div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+      <div class="latest-foot">
+        <a href="/blog" class="btn-text">View all articles &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <Fragment set:html={contactHtml} />
+</Base>

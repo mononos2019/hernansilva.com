@@ -14,10 +14,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site (Astro + Pagefind search index)
+        run: npm run build
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 79003dd806d7cc53c31437a02c68b4df
-          command: pages deploy . --project-name=hernansilva --branch=main
-
+          command: pages deploy dist --project-name=hernansilva --branch=main

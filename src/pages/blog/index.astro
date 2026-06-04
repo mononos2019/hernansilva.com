@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categories = Array.from(new Set(posts.map((p) => p.data.category)));
+const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<Base title="Blog — Hernan Silva" description="Articles on AI and automation, IT and managed services, and personal reflections.">
+  <section class="page-head">
+    <div class="section-inner">
+      <div class="section-eyebrow">Writing</div>
+      <h2 class="section-title">The Blog</h2>
+      <p>Short reads on AI and automation, IT and managed services, and the occasional personal reflection.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="blog-controls">
+        <div class="search-wrap">
+          <div id="search"></div>
+        </div>
+        <div class="cat-filter" id="catFilter">
+          <button class="cat-btn active" data-cat="all">All</button>
+          {categories.map((c) => <button class="cat-btn" data-cat={c}>{c}</button>)}
+        </div>
+      </div>
+
+      <div class="post-grid" id="postGrid">
+        {posts.map((post) => (
+          <div class="post-card" data-category={post.data.category}>
+            <a href={`/blog/${post.slug}`} class="post-link">
+              <img class="post-img" src={post.data.image} alt={post.data.title} loading="lazy" />
+              <div class="post-body">
+                <div class="post-tag">{post.data.category}</div>
+                <div class="post-title">{post.data.title}</div>
+                <div class="post-excerpt">{post.data.excerpt}</div>
+                <div class="post-meta"><span class="post-date">{fmt(post.data.date)}</span></div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.PagefindUI) {
+        new window.PagefindUI({ element: '#search', showSubResults: true, showImages: true, resetStyles: false });
+      }
+      const grid = document.getElementById('postGrid');
+      document.getElementById('catFilter').addEventListener('click', (e) => {
+        const btn = e.target.closest('.cat-btn');
+        if (!btn) return;
+        document.querySelectorAll('.cat-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        grid.querySelectorAll('.post-card').forEach((card) => {
+          const show = cat === 'all' || card.dataset.category === cat;
+          card.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
+  </script>
+</Base>
