@@ -15,8 +15,10 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@400;500&display=swap"
     rel="stylesheet"
   />
   <style is:global>
@@ -90,10 +92,8 @@ section{padding:5rem 0}
 .timeline{margin-top:1rem}
 .tl-item{display:flex;gap:1rem;margin-bottom:1.5rem}
 .tl-year{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--gold);min-width:50px;padding-top:2px}
-.tl-content{}
 .tl-title{font-weight:500;font-size:0.9rem;color:var(--navy)}
 .tl-desc{font-size:0.83rem;color:var(--text-muted);margin-top:2px}
-.tl-line{width:1px;background:var(--border);position:absolute}
 
 /* QUOTE BLOCK */
 blockquote.pull{border-left:3px solid var(--gold);padding:1rem 1.5rem;margin:2rem 0;background:rgba(200,168,75,0.06);border-radius:0 4px 4px 0}
@@ -148,7 +148,6 @@ blockquote.pull p{font-family:var(--serif);font-size:1.15rem;font-style:italic;c
 .post-title{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--navy);margin-bottom:0.5rem;line-height:1.4}
 .post-excerpt{font-size:0.83rem;color:var(--text-muted);line-height:1.6}
 .post-meta{margin-top:1rem;font-size:0.75rem;color:var(--text-light);display:flex;gap:1rem}
-.post-date::before{content:''}
 
 /* CONTACT */
 .contact-bg{background:var(--navy)}
@@ -256,6 +255,7 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(200,168,75,0.12);pad
 .social-icon:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 .social-icon svg{width:18px;height:18px;fill:currentColor}
   </style>
+  <noscript><style>.fade-in{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
   <nav>
@@ -363,16 +363,6 @@ footer{background:var(--navy-mid);border-top:1px solid rgba(200,168,75,0.12);pad
       entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (nav) nav.style.background = window.scrollY > 50 ? 'rgba(15,30,60,0.99)' : 'rgba(15,30,60,0.97)';
-    });
-    document.querySelectorAll('a[href^="#"]').forEach((a) => {
-      a.addEventListener('click', (e) => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
   </script>
 </body>
 </html>
