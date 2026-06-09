@@ -32,10 +32,21 @@ const schema = {
   "author": { "@type": "Person", "name": "Hernan Silva", "url": "https://hernansilva.com" },
   "publisher": { "@type": "Person", "name": "Hernan Silva", "url": "https://hernansilva.com" }
 };
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": new URL('/', siteUrl).href },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": new URL('/blog/', siteUrl).href },
+    { "@type": "ListItem", "position": 3, "name": title, "item": pageUrl }
+  ]
+};
 ---
 <Base title={`${title} — Hernan Silva`} description={excerpt} image={image} type="article">
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
   </Fragment>
 
   <article class="article" data-pagefind-body data-pagefind-filter={`category:${category}`}>

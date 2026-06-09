@@ -4,16 +4,19 @@ interface Props {
   description?: string;
   image?: string;
   type?: string;
+  noindex?: boolean;
 }
 const {
   title = 'Hernan Silva | Co-Owner of CIO Landing, Chicago-Area MSP Founder',
   description = 'Hernan Silva is co-owner of CIO Landing, a Chicago-area managed IT services provider. Argentine-born entrepreneur, in IT since 1992, based in Northbrook, Illinois.',
   image = '/og-image.jpg',
   type = 'website',
+  noindex = false,
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL('https://hernansilva.com');
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const ogImage = new URL(image, siteUrl).href;
+const robots = noindex ? 'noindex, follow' : 'index, follow';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,11 @@ const ogImage = new URL(image, siteUrl).href;
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content={robots} />
+  <meta name="author" content="Hernan Silva" />
+  <meta name="theme-color" content="#0f1e3c" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Hernan Silva — Blog" href="/rss.xml" />
   <meta property="og:type" content={type} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
