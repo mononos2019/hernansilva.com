@@ -9,8 +9,59 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .slice(0, 3);
 
 const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://hernansilva.com/#hernan",
+      "name": "Hernan Silva",
+      "url": "https://hernansilva.com",
+      "jobTitle": "Co-Owner",
+      "worksFor": { "@id": "https://hernansilva.com/#ciolanding" },
+      "homeLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Northbrook",
+          "addressRegion": "IL",
+          "addressCountry": "US"
+        }
+      },
+      "knowsLanguage": ["Spanish", "English"],
+      "nationality": "Argentine",
+      "sameAs": [
+        "https://www.linkedin.com/in/hernansilva",
+        "https://twitter.com/hernansilva",
+        "https://www.instagram.com/cio.hernansilva"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hernansilva.com/#ciolanding",
+      "name": "CIO Landing",
+      "url": "https://ciolanding.com",
+      "foundingDate": "2012",
+      "founder": { "@id": "https://hernansilva.com/#hernan" },
+      "areaServed": "Chicago metropolitan area",
+      "description": "Managed IT services provider serving small and mid-sized businesses across the Chicago metro area."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hernansilva.com/#website",
+      "url": "https://hernansilva.com",
+      "name": "Hernan Silva",
+      "publisher": { "@id": "https://hernansilva.com/#hernan" }
+    }
+  ]
+};
 ---
 <Base>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </Fragment>
+
   <Fragment set:html={topHtml} />
 
   <!-- LATEST ARTICLES -->

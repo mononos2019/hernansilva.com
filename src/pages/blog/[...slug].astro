@@ -11,8 +11,33 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const { title, date, category, tags, image, excerpt } = post.data;
 const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const siteUrl = Astro.site ?? new URL('https://hernansilva.com');
+const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
+const imageUrl = new URL(image, siteUrl).href;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": excerpt,
+  "image": imageUrl,
+  "datePublished": date.toISOString(),
+  "dateModified": date.toISOString(),
+  "url": pageUrl,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+  "articleSection": category,
+  "keywords": tags.join(", "),
+  "inLanguage": "en",
+  "author": { "@type": "Person", "name": "Hernan Silva", "url": "https://hernansilva.com" },
+  "publisher": { "@type": "Person", "name": "Hernan Silva", "url": "https://hernansilva.com" }
+};
 ---
-<Base title={`${title} — Hernan Silva`} description={excerpt}>
+<Base title={`${title} — Hernan Silva`} description={excerpt} image={image} type="article">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </Fragment>
+
   <article class="article" data-pagefind-body data-pagefind-filter={`category:${category}`}>
     <div class="article-cat">{category}</div>
     <h1>{title}</h1>
