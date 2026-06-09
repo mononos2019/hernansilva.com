@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hernansilva.com/sitemap.xml
