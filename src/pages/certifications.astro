@@ -1,20 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const certs = [
-  { name: 'Cybersecurity', issuer: 'Massachusetts Institute of Technology (MIT)', year: '2015' },
-  { name: 'CompTIA Security+', issuer: 'CompTIA', year: '2015' },
-  { name: 'CompTIA A+', issuer: 'CompTIA', year: '2001' },
-  { name: 'MCSE: Server Infrastructure', issuer: 'Microsoft', year: '' },
-  { name: 'Microsoft Certified Professional (MCP)', issuer: 'Microsoft', year: '' },
-  { name: 'Cisco Certified Network Associate (CCNA)', issuer: 'Cisco', year: '' },
-  { name: 'VMware Certified Professional', issuer: 'VMware', year: '' },
-  { name: 'Fortinet Network Security (NSE)', issuer: 'Fortinet', year: '' },
-  { name: 'HIPAA Compliance', issuer: 'HIPAA', year: '' },
-];
-const education = [
-  { name: 'B.A., Business Administration', issuer: 'Northeastern University', year: '' },
-];
 
 const groups = [
   {
@@ -101,27 +87,6 @@ const totalDocs = groups.reduce((a, g) => a + g.certs.length, 0);
 
   <section>
     <div class="section-inner">
-      <div class="cred-grid">
-        {certs.map((c) => (
-          <div class="cred-card">
-            <div class="cred-name">{c.name}</div>
-            <div class="cred-issuer">{c.issuer}</div>
-            {c.year && <div class="cred-year">Earned {c.year}</div>}
-          </div>
-        ))}
-      </div>
-
-      <h2 class="subhead">Education</h2>
-      <div class="cred-grid">
-        {education.map((c) => (
-          <div class="cred-card">
-            <div class="cred-name">{c.name}</div>
-            <div class="cred-issuer">{c.issuer}</div>
-          </div>
-        ))}
-      </div>
-
-      <h2 class="subhead">Certificate Archive</h2>
       <p class="lead">{totalDocs} diplomas and certificates, grouped by issuer and ordered by date. Click any one to view it full size.</p>
 
       {groups.map((g) => (
