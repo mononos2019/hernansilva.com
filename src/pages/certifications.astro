@@ -96,7 +96,7 @@ const totalDocs = groups.reduce((a, g) => a + g.certs.length, 0);
           <div class="cert-cards">
             {g.certs.map((c) => (
               <div class="cert-doc">
-                <img class="cert-doc-img" src={`/images/certs/diploma-${c.n}-thumb.jpg`} data-full={`/images/certs/diploma-${c.n}.jpg`} alt={c.title} decoding="async" onerror="this.closest('.cert-doc').style.display='none'" />
+                <img class="cert-doc-img" src={`/images/certs/diploma-${c.n}-thumb.jpg?r=2`} data-full={`/images/certs/diploma-${c.n}.jpg?r=2`} alt={c.title} decoding="async" onerror="this.closest('.cert-doc').style.display='none'" />
                 <div class="cert-doc-body">
                   <div class="cert-doc-meta">{c.date}</div>
                   <div class="cert-doc-title">{c.title}</div>
