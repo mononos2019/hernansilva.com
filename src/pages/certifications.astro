@@ -72,7 +72,7 @@ const diplomaIds = [
       <div class="gallery-grid">
         {diplomaIds.map((_id, i) => (
           <button class="gallery-item" data-full={`/images/certs/diploma-${i + 1}.jpg`} aria-label={`Certificate ${i + 1}`}>
-            <img loading="lazy" src={`/images/certs/diploma-${i + 1}-thumb.jpg`} alt={`Certificate ${i + 1}`} width="480" onerror="this.closest('.gallery-item').classList.add('is-broken')" />
+            <img decoding="async" src={`/images/certs/diploma-${i + 1}-thumb.jpg`} alt={`Certificate ${i + 1}`} width="480" height="360" onerror="this.closest('.gallery-item').classList.add('is-broken')" />
           </button>
         ))}
       </div>
