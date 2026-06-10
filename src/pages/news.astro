@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+
+const press = [
+  { source: 'MSP Success Magazine', year: '2022', title: 'What an Entrepreneurial Single Mom Taught Hernan Silva', desc: 'A feature on the values behind running one of Chicago’s premier managed-services firms.', url: 'https://www.ciolanding.com/msp-success-magazine-article-hernan/' },
+  { source: 'EO Chicago', year: '2022', title: 'Member Spotlight: Hernan Silva', desc: 'The Entrepreneurs’ Organization profiles the journey from a Buenos Aires garage to Chicago.', url: 'https://eochicago.org/blog/september-eo-chicago-member-spotlight-hernan-silva/' },
+  { source: 'The Org', year: '', title: 'Hernan Silva, COO of CIO Landing', desc: 'Leadership profile and organizational chart for CIO Landing.', url: 'https://theorg.com/org/cio-landing/org-chart/hernan-silva' },
+  { source: 'DesignRush', year: '', title: 'CIO Landing — Agency Profile & Reviews', desc: 'Company profile and verified client reviews on DesignRush.', url: 'https://www.designrush.com/agency/profile/cio-landing#reviews' },
+  { source: 'Amazon', year: '', title: 'Hernan Silva — Author Page', desc: 'Books and publications authored by Hernan Silva.', url: 'https://www.amazon.com/stores/Hernan-Silva/author/B076JN8G9J' },
+  { source: 'RocketReach', year: '', title: 'Hernan Silva — Professional Profile', desc: 'Professional background and career profile.', url: 'https://rocketreach.co/hernan-silva-email_6457071' },
+];
+const recognition = ['MSP Titans of Today', 'MSP 501', 'CRN MSP 500', 'Inc. 5000', 'NextGen 101'];
+---
+<Base title="News & Press — Hernan Silva" description="Press features, interviews, and recognition for Hernan Silva, co-owner of CIO Landing in the Chicago area.">
+  <section class="page-head">
+    <div class="section-inner">
+      <div class="section-eyebrow">In the News</div>
+      <h2 class="section-title">Press & Features</h2>
+      <p>Interviews, profiles, and features across the IT, entrepreneurship, and managed-services world.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <div class="news-grid">
+        {press.map((p) => (
+          <a class="news-card" href={p.url} target="_blank" rel="noopener noreferrer">
+            <div class="news-top">
+              <span class="news-source">{p.source}</span>
+              {p.year && <span class="news-year">{p.year}</span>}
+            </div>
+            <div class="news-title">{p.title}</div>
+            <div class="news-desc">{p.desc}</div>
+            <span class="news-go">Read more &rarr;</span>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="subhead">Recognition</h2>
+      <p class="lead" style="margin-bottom:1.25rem">CIO Landing, the Chicago-area MSP Hernan co-owns, has been recognized on leading industry lists.</p>
+      <div class="recog">
+        {recognition.map((r) => <span>{r}</span>)}
+      </div>
+    </div>
+  </section>
+</Base>
