@@ -33,7 +33,6 @@ const diplomaIds = [
   '1MdLYEIAh5DaUlt16VkAsIL-HL4p8Jvx_','1f_ivVKOTvW0E01adSenJBSHcd158YYuT','1aPsuWs09XO7HCzpOjhGe1kVDCMrgyACi',
   '1bhBiJDRhO2UCCEbv8Uswwp2oj2Mge32Y','1V_jjfUai--xGchyEnMB9bUVwN2ZxA0t5',
 ];
-const thumb = (id, w) => `https://drive.google.com/thumbnail?id=${id}&sz=w${w}`;
 ---
 <Base title="Certifications — Hernan Silva" description="Professional certifications and credentials held by Hernan Silva: MIT Cybersecurity, CompTIA Security+, Cisco CCNA, MCSE, VMware, Fortinet and more.">
   <section class="page-head">
@@ -71,9 +70,9 @@ const thumb = (id, w) => `https://drive.google.com/thumbnail?id=${id}&sz=w${w}`;
       <h2 class="subhead">Diplomas & Certificates</h2>
       <p class="lead" style="margin-bottom:1.25rem">A selection of {diplomaIds.length} diplomas and certificates earned since 1992. Click any to enlarge.</p>
       <div class="gallery-grid">
-        {diplomaIds.map((id, i) => (
-          <button class="gallery-item" data-full={thumb(id, 1600)} aria-label={`Diploma ${i + 1}`}>
-            <img loading="lazy" src={thumb(id, 500)} alt={`Diploma ${i + 1}`} onerror="this.closest('.gallery-item').classList.add('is-broken')" />
+        {diplomaIds.map((_id, i) => (
+          <button class="gallery-item" data-full={`/images/certs/diploma-${i + 1}.jpg`} aria-label={`Certificate ${i + 1}`}>
+            <img loading="lazy" src={`/images/certs/diploma-${i + 1}-thumb.jpg`} alt={`Certificate ${i + 1}`} width="480" onerror="this.closest('.gallery-item').classList.add('is-broken')" />
           </button>
         ))}
       </div>
