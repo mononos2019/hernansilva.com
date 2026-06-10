@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 const certs = [
   { name: 'Cybersecurity', issuer: 'Massachusetts Institute of Technology (MIT)', year: '2015' },
   { name: 'CompTIA Security+', issuer: 'CompTIA', year: '2015' },
-  { name: 'CompTIA A+', issuer: 'CompTIA', year: '' },
+  { name: 'CompTIA A+', issuer: 'CompTIA', year: '2001' },
   { name: 'MCSE: Server Infrastructure', issuer: 'Microsoft', year: '' },
   { name: 'Microsoft Certified Professional (MCP)', issuer: 'Microsoft', year: '' },
   { name: 'Cisco Certified Network Associate (CCNA)', issuer: 'Cisco', year: '' },
@@ -15,24 +15,80 @@ const certs = [
 const education = [
   { name: 'B.A., Business Administration', issuer: 'Northeastern University', year: '' },
 ];
-const shield = 'M12 1 3 5v6c0 5.1 3.4 9.3 9 11 5.6-1.7 9-5.9 9-11V5l-9-4zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6z';
 
-const diplomaIds = [
-  '16HOWewwFQIXoGGLm29ZpFIhxfXhjISIm','166sehg7yatJVL3-EcKsoq1oJKDBDQWfB','1ECgQghdYEohABLvdV1nMzJyqml-gFkpV',
-  '1OR0eq2tw6zoYjhh6qpnlWMoUCQ-7vh48','1LmODLseRbkEJq92PwP-ojD3xA-kAYt4j','1Amd2p4dpOyfpRnShUp8QQp31APr4N8Uc',
-  '1tR6BcXdnQIbKLZlXVc-UxOrg1030SK0d','1LkDuJAdJSZNnEScVvgVXKixWkQrELuvt','1vjUYpZBwQj1vse8Oqedc7wLW3MFEBxtS',
-  '1I_Zdk7vHJSezaqBxz6_XNG8WgaIGf8xB','1Ac7-LIJnyoMmmMNqSZbx1pwIa1jCpyBe','1NWBf7w3KuH8TN7KsBMktjvGDURjTRy8i',
-  '1oSP6KL-9b0yRp6xQDIFUr4Kb6_ZntWtd','1SEgxDOUSU6GQzavjRfzn3JHCKULbkvEf','1bJlx1_T1xqDXqgxzLMLAIY5KWfhKAyvC',
-  '19A5l0jEUO1o6VxShqdrwUUr-byaKCEQi','1HO7qR31ZmpNJ1BJaPEGdWwOBdZ8Q273B','1ybvs7MO_qzevwb09Vprm03m908muV9oa',
-  '1pOYFvhrsRaaFQ9zG_lKSiX7d5vh5cRlH','1EPxj6z1Ca3lrGpk0Z-ylf7z_5ik4w9fI','11oBYzRpyKqIui1I1oI6tCOZjHpd5R6Tf',
-  '13q8gDsf6h-CZrOvydaBU-rmfp7_OVqGc','1swm621IZafBI0QPyKnJSoJrCAcoVWxwS','1XKTjvlqXpf6wLaieHZnxIfOWseGemNdD',
-  '1JU7d-0lKigWIF9mbDgEb1glOkpWQs-ta','1Kz4tiHNpUJdn-5y0j6EjDWqzFCPLEtub','1z30etNvQARhjq7dRE9SIDH8rAPSnW__q',
-  '1zFn8kCY7JJdoJw_mhPOxOAg7uL2g_--U','13YM37RTpOIgGdejyuKaszdIh8pL7VvUC','1qpjUjqSG0Ya9fFHOJ_N1hdY_gGmtJUPD',
-  '1pUIN8ttTAz8tXjg_lopTAWuCaQwQEfPy','1T3aGBBwMgBdiQZLNFZIGb8W92XR2-Z9c','1Li9Oxb3SStEwZGNa6QHuEOlAf7CjQ7ix',
-  '1Vv38fTkBLEbkEq7Ci5-HaxKkrpkvuimH','1mL1axxltOkWrXDMu6Y3g1270fFswbzPV','1j6t-gVjUw-czYoH2_rw5D8E-E4q-HCaF',
-  '1MdLYEIAh5DaUlt16VkAsIL-HL4p8Jvx_','1f_ivVKOTvW0E01adSenJBSHcd158YYuT','1aPsuWs09XO7HCzpOjhGe1kVDCMrgyACi',
-  '1bhBiJDRhO2UCCEbv8Uswwp2oj2Mge32Y','1V_jjfUai--xGchyEnMB9bUVwN2ZxA0t5',
+const groups = [
+  {
+    type: 'Microsoft',
+    intro: 'Microsoft training and certification, 1997 to 2004.',
+    certs: [
+      { n: 14, title: 'Certificate of Excellence — Supporting Microsoft Windows 95', date: 'Oct 1997', desc: 'Microsoft Official Curriculum, Microsoft Education & Certification.' },
+      { n: 6, title: 'Microsoft Certified Professional (MCP)', date: '2004', desc: 'Certificate of Excellence recognizing MCP status.' },
+      { n: 13, title: 'Windows 2000 Network & Operating System Essentials (2151B)', date: 'Feb 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 4, title: 'Implementing Microsoft Windows 2000 Professional & Server (2152C)', date: 'Feb 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 12, title: 'Implementing Microsoft Windows 2000 Professional & Server (2152B)', date: 'Feb 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 11, title: 'Implementing a Microsoft Windows 2000 Network Infrastructure (2153B)', date: 'Mar 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 2, title: 'Implementing a Microsoft Windows 2000 Network Infrastructure (2153B)', date: 'Mar 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 10, title: 'Administering Microsoft Windows 2000 Directory Services (2148B)', date: 'Apr 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 9, title: 'MCP Exam 70-218 Preparation Workshop', date: 'Apr 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 8, title: 'Designing a Windows 2000 Directory Services Infrastructure (1561B)', date: 'May 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 3, title: 'Windows 2000 Network & Operating System Essentials (2151B)', date: 'May 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+      { n: 5, title: 'Applying Microsoft Security Guidance (Hands-On Lab 2811)', date: 'Aug 2004', desc: 'Microsoft Approved Course — BS Training Center.' },
+    ],
+  },
+  {
+    type: 'CompTIA',
+    intro: 'Vendor-neutral hardware certification.',
+    certs: [
+      { n: 7, title: 'CompTIA A+ — Core Hardware Exam', date: 'Dec 2001', desc: 'CompTIA A+ Certification Program — passing score.' },
+    ],
+  },
+  {
+    type: 'Cisco',
+    intro: 'Networking fundamentals through the Cisco Networking Academy.',
+    certs: [
+      { n: 24, title: 'Cisco Networking Academy — Semester I', date: 'Jan 2000', desc: 'Completed via UTN / Fundación Proydesa, Buenos Aires (1999).' },
+    ],
+  },
+  {
+    type: 'IBM',
+    intro: 'IBM PC Institute, 2003.',
+    certs: [
+      { n: 15, title: 'IBM ThinkVantage Technologies — Secure Wireless Solutions', date: 'May 2003', desc: 'IBM PC Institute Certificate of Achievement (TXW15-R2).' },
+      { n: 25, title: 'IBM ThinkVantage Technologies — Security Solutions', date: 'May 2003', desc: 'IBM PC Institute Certificate of Achievement (TXW15-R2).' },
+      { n: 26, title: 'IBM ThinkVantage Technologies — Migration & Update Solutions', date: 'May 2003', desc: 'IBM PC Institute Certificate of Achievement (TXW16-R2).' },
+    ],
+  },
+  {
+    type: 'Hewlett-Packard',
+    intro: 'HP Service Authorization Certificates — authorized to service and repair HP products (2003).',
+    certs: [
+      { n: 29, title: 'HP Service Tools & Manuals (SPN 608)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 30, title: 'HP LaserJet 4 / 4M (SPN 356)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 38, title: 'HP LaserJet Basic Hardware Training (SPN 901)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 19, title: 'HP LaserJet 4000 Series (SPN 325)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 28, title: 'HP LaserJet 5500 / 5100 Series (SPN 367)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 31, title: 'HP LaserJet 4000 Series (SPN 366)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 37, title: 'HP LaserJet 1100 (SPN 359)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 17, title: 'HP LaserJet 1200 (SPN 367)', date: 'Jan 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 16, title: 'HP LaserJet 8500 / 8100 MFP (SPN 365)', date: 'Feb 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 18, title: 'HP Personal Computer Products (SPN 414)', date: 'Feb 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 36, title: 'HP DesignJet / Plotters (SPN 341)', date: 'Feb 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 35, title: 'HP LaserJet 9000 Series (SPN 365)', date: 'Feb 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 34, title: 'HP LaserJet 1000 / 1005 (SPN 371)', date: 'Feb 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 33, title: 'HP LaserJet 2200 / 2300 (SPN 361)', date: 'Feb 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 21, title: 'HP LaserJet 4200 & 4300 (SPN 375)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 32, title: 'HP LaserJet 4200 & 4300 (SPN 375)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 22, title: 'HP LaserJet 5500 (SPN 366)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 41, title: 'HP LaserJet 3150 (SPN 363)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 20, title: 'HP EtherStreet Networking (SPN 412)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 40, title: 'HP Color LaserJet 4500 & 4550 (SPN 355)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 23, title: 'HP LaserJet 3200m Series (SPN 370)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 39, title: 'HP ScanJet C1302A / C1303A (SPN 342)', date: 'Mar 2003', desc: 'HP Service Authorization Certificate.' },
+      { n: 27, title: 'HP OmniBook 500 / 510 / 6000 / 6100 (SPN 608)', date: 'May 2003', desc: 'HP Service Authorization Certificate.' },
+    ],
+  },
 ];
+const totalDocs = groups.reduce((a, g) => a + g.certs.length, 0);
 ---
 <Base title="Certifications — Hernan Silva" description="Professional certifications and credentials held by Hernan Silva: MIT Cybersecurity, CompTIA Security+, Cisco CCNA, MCSE, VMware, Fortinet and more.">
   <section class="page-head">
@@ -48,7 +104,6 @@ const diplomaIds = [
       <div class="cred-grid">
         {certs.map((c) => (
           <div class="cred-card">
-            <div class="cred-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={shield}/></svg></div>
             <div class="cred-name">{c.name}</div>
             <div class="cred-issuer">{c.issuer}</div>
             {c.year && <div class="cred-year">Earned {c.year}</div>}
@@ -60,40 +115,48 @@ const diplomaIds = [
       <div class="cred-grid">
         {education.map((c) => (
           <div class="cred-card">
-            <div class="cred-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={shield}/></svg></div>
             <div class="cred-name">{c.name}</div>
             <div class="cred-issuer">{c.issuer}</div>
           </div>
         ))}
       </div>
 
-      <h2 class="subhead">Diplomas & Certificates</h2>
-      <p class="lead" style="margin-bottom:1.25rem">A selection of {diplomaIds.length} diplomas and certificates earned since 1992. Click any to enlarge.</p>
-      <div class="gallery-grid">
-        {diplomaIds.map((_id, i) => (
-          <button class="gallery-item" data-full={`/images/certs/diploma-${i + 1}.jpg`} aria-label={`Certificate ${i + 1}`}>
-            <img decoding="async" src={`/images/certs/diploma-${i + 1}-thumb.jpg`} alt={`Certificate ${i + 1}`} width="480" height="360" onerror="this.closest('.gallery-item').classList.add('is-broken')" />
-          </button>
-        ))}
-      </div>
+      <h2 class="subhead">Certificate Archive</h2>
+      <p class="lead">{totalDocs} diplomas and certificates, grouped by issuer and ordered by date. Click any one to view it full size.</p>
 
-      <div class="cert-note" style="margin-top:2.5rem">
-        <p><strong>Originals available on request.</strong> The certificates above span training and credentials earned across a 30-year IT career.</p>
+      {groups.map((g) => (
+        <div class="cert-section">
+          <h3 class="cert-group-title">{g.type} <span>{g.certs.length}</span></h3>
+          <p class="cert-group-intro">{g.intro}</p>
+          <div class="cert-cards">
+            {g.certs.map((c) => (
+              <div class="cert-doc">
+                <img class="cert-doc-img" src={`/images/certs/diploma-${c.n}-thumb.jpg`} data-full={`/images/certs/diploma-${c.n}.jpg`} alt={c.title} decoding="async" onerror="this.closest('.cert-doc').style.display='none'" />
+                <div class="cert-doc-body">
+                  <div class="cert-doc-meta">{c.date}</div>
+                  <div class="cert-doc-title">{c.title}</div>
+                  <div class="cert-doc-desc">{c.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="cert-note" style="margin-top:2.75rem">
+        <p><strong>Originals available on request.</strong> Spanning training and credentials earned across a 30-year IT career.</p>
         <a class="btn-primary" href="/#contact">Get in touch</a>
       </div>
     </div>
   </section>
 
-  <div class="lightbox" id="lb"><button class="lightbox-close" id="lbclose" aria-label="Close">&times;</button><img id="lbimg" src="" alt="Diploma" /></div>
+  <div class="lightbox" id="lb"><button class="lightbox-close" id="lbclose" aria-label="Close">&times;</button><img id="lbimg" src="" alt="Certificate" /></div>
   <script is:inline>
     (function () {
       var lb = document.getElementById('lb');
       var img = document.getElementById('lbimg');
-      document.querySelectorAll('.gallery-item').forEach(function (it) {
-        it.addEventListener('click', function () {
-          img.src = it.getAttribute('data-full');
-          lb.classList.add('open');
-        });
+      document.querySelectorAll('.cert-doc-img').forEach(function (it) {
+        it.addEventListener('click', function () { img.src = it.getAttribute('data-full'); lb.classList.add('open'); });
       });
       function close() { lb.classList.remove('open'); img.src = ''; }
       lb.addEventListener('click', function (e) { if (e.target !== img) close(); });
