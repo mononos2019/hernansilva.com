@@ -16,6 +16,24 @@ const education = [
   { name: 'B.A., Business Administration', issuer: 'Northeastern University', year: '' },
 ];
 const shield = 'M12 1 3 5v6c0 5.1 3.4 9.3 9 11 5.6-1.7 9-5.9 9-11V5l-9-4zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6z';
+
+const diplomaIds = [
+  '16HOWewwFQIXoGGLm29ZpFIhxfXhjISIm','166sehg7yatJVL3-EcKsoq1oJKDBDQWfB','1ECgQghdYEohABLvdV1nMzJyqml-gFkpV',
+  '1OR0eq2tw6zoYjhh6qpnlWMoUCQ-7vh48','1LmODLseRbkEJq92PwP-ojD3xA-kAYt4j','1Amd2p4dpOyfpRnShUp8QQp31APr4N8Uc',
+  '1tR6BcXdnQIbKLZlXVc-UxOrg1030SK0d','1LkDuJAdJSZNnEScVvgVXKixWkQrELuvt','1vjUYpZBwQj1vse8Oqedc7wLW3MFEBxtS',
+  '1I_Zdk7vHJSezaqBxz6_XNG8WgaIGf8xB','1Ac7-LIJnyoMmmMNqSZbx1pwIa1jCpyBe','1NWBf7w3KuH8TN7KsBMktjvGDURjTRy8i',
+  '1oSP6KL-9b0yRp6xQDIFUr4Kb6_ZntWtd','1SEgxDOUSU6GQzavjRfzn3JHCKULbkvEf','1bJlx1_T1xqDXqgxzLMLAIY5KWfhKAyvC',
+  '19A5l0jEUO1o6VxShqdrwUUr-byaKCEQi','1HO7qR31ZmpNJ1BJaPEGdWwOBdZ8Q273B','1ybvs7MO_qzevwb09Vprm03m908muV9oa',
+  '1pOYFvhrsRaaFQ9zG_lKSiX7d5vh5cRlH','1EPxj6z1Ca3lrGpk0Z-ylf7z_5ik4w9fI','11oBYzRpyKqIui1I1oI6tCOZjHpd5R6Tf',
+  '13q8gDsf6h-CZrOvydaBU-rmfp7_OVqGc','1swm621IZafBI0QPyKnJSoJrCAcoVWxwS','1XKTjvlqXpf6wLaieHZnxIfOWseGemNdD',
+  '1JU7d-0lKigWIF9mbDgEb1glOkpWQs-ta','1Kz4tiHNpUJdn-5y0j6EjDWqzFCPLEtub','1z30etNvQARhjq7dRE9SIDH8rAPSnW__q',
+  '1zFn8kCY7JJdoJw_mhPOxOAg7uL2g_--U','13YM37RTpOIgGdejyuKaszdIh8pL7VvUC','1qpjUjqSG0Ya9fFHOJ_N1hdY_gGmtJUPD',
+  '1pUIN8ttTAz8tXjg_lopTAWuCaQwQEfPy','1T3aGBBwMgBdiQZLNFZIGb8W92XR2-Z9c','1Li9Oxb3SStEwZGNa6QHuEOlAf7CjQ7ix',
+  '1Vv38fTkBLEbkEq7Ci5-HaxKkrpkvuimH','1mL1axxltOkWrXDMu6Y3g1270fFswbzPV','1j6t-gVjUw-czYoH2_rw5D8E-E4q-HCaF',
+  '1MdLYEIAh5DaUlt16VkAsIL-HL4p8Jvx_','1f_ivVKOTvW0E01adSenJBSHcd158YYuT','1aPsuWs09XO7HCzpOjhGe1kVDCMrgyACi',
+  '1bhBiJDRhO2UCCEbv8Uswwp2oj2Mge32Y','1V_jjfUai--xGchyEnMB9bUVwN2ZxA0t5',
+];
+const thumb = (id, w) => `https://drive.google.com/thumbnail?id=${id}&sz=w${w}`;
 ---
 <Base title="Certifications — Hernan Silva" description="Professional certifications and credentials held by Hernan Silva: MIT Cybersecurity, CompTIA Security+, Cisco CCNA, MCSE, VMware, Fortinet and more.">
   <section class="page-head">
@@ -50,10 +68,37 @@ const shield = 'M12 1 3 5v6c0 5.1 3.4 9.3 9 11 5.6-1.7 9-5.9 9-11V5l-9-4zm-1.2 1
         ))}
       </div>
 
-      <div class="cert-note">
-        <p><strong>40+ diplomas and professional certificates on file</strong>, dating back to 1992. Full copies are available on request.</p>
+      <h2 class="subhead">Diplomas & Certificates</h2>
+      <p class="lead" style="margin-bottom:1.25rem">A selection of {diplomaIds.length} diplomas and certificates earned since 1992. Click any to enlarge.</p>
+      <div class="gallery-grid">
+        {diplomaIds.map((id, i) => (
+          <button class="gallery-item" data-full={thumb(id, 1600)} aria-label={`Diploma ${i + 1}`}>
+            <img loading="lazy" src={thumb(id, 500)} alt={`Diploma ${i + 1}`} onerror="this.closest('.gallery-item').classList.add('is-broken')" />
+          </button>
+        ))}
+      </div>
+
+      <div class="cert-note" style="margin-top:2.5rem">
+        <p><strong>Originals available on request.</strong> The certificates above span training and credentials earned across a 30-year IT career.</p>
         <a class="btn-primary" href="/#contact">Get in touch</a>
       </div>
     </div>
   </section>
+
+  <div class="lightbox" id="lb"><button class="lightbox-close" id="lbclose" aria-label="Close">&times;</button><img id="lbimg" src="" alt="Diploma" /></div>
+  <script is:inline>
+    (function () {
+      var lb = document.getElementById('lb');
+      var img = document.getElementById('lbimg');
+      document.querySelectorAll('.gallery-item').forEach(function (it) {
+        it.addEventListener('click', function () {
+          img.src = it.getAttribute('data-full');
+          lb.classList.add('open');
+        });
+      });
+      function close() { lb.classList.remove('open'); img.src = ''; }
+      lb.addEventListener('click', function (e) { if (e.target !== img) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 </Base>
