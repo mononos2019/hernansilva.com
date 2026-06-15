@@ -1,5 +1,5 @@
 ---
-title: "I Used AI to Book My Swim Lane"
+title: "I Use AI to Swim"
 date: 2026-06-15
 category: "AI & Automation"
 tags: ["ai", "automation", "claude", "personal"]
