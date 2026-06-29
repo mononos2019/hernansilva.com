@@ -1,7 +1,7 @@
 ---
 title: "The AI Inside Job"
 date: 2026-06-29
-category: "Business"
+category: "AI & Automation"
 tags: ["ai", "leadership", "culture", "change management"]
 image: "/images/blog/19.png"
 excerpt: "Most AI rollouts fail before the software gets a fair chance. The technology works. The people around it don't buy in."
@@ -33,4 +33,4 @@ Before you spend on the next AI tool, spend on the conversation first. What does
 
 ---
 
-*Sources: [WRITER / Workplace Intelligence — 2026 AI Adoption in the Enterprise](https://go.writer.com/ai-adoption-enterprise-2026) · [National University Survey, 2026](https://www.metaintro.com/blog/workers-say-ai-does-more-harm-than-good-employers-cut-training-2026) · [CIO Landing](https://www.ciolanding.com/)*
+*Sources: [WRITER / Workplace Intelligence — 2026 AI Adoption in the Enterprise](https://go.writer.com/ai-adoption-enterprise-2026) · [National University Survey, 2026](https://www.metaintro.com/blog/workers-say-ai-does-more-harm-than-good-employers-cut-training-2026) · [CIO Landing](https://www.ciolanding.
