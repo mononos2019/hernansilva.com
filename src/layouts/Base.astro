@@ -7,8 +7,8 @@ interface Props {
   noindex?: boolean;
 }
 const {
-  title = 'Hernan Silva | Co-Owner of CIO Landing, Chicago-Area MSP Founder',
-  description = 'Hernan Silva is co-owner of CIO Landing, a Chicago-area managed IT services provider. Argentine-born entrepreneur, in IT since 1992, based in Northbrook, Illinois.',
+  title = 'Hernan Silva | Co-Owner of CIO Landing, Chicago MSP',
+  description = 'Hernan Silva is co-owner of CIO Landing, a Chicago-area managed IT services provider. Argentine-born entrepreneur, in IT since 1992, based in Northbrook, IL.',
   image = '/og-image.jpg',
   type = 'website',
   noindex = false,
@@ -59,6 +59,7 @@ const robots = noindex ? 'noindex, follow' : 'index, follow';
   />
   <style is:global>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :root{
   --navy:#102A43;
   --navy-mid:#1B3A5E;
