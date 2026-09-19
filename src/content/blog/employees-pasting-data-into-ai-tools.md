@@ -3,7 +3,7 @@ title: "Your Team Is Pasting Company Data Into AI Tools"
 date: 2026-09-08
 category: "AI & Automation"
 tags: ["AI", "data privacy", "cybersecurity", "shadow IT"]
-image: "/images/blog/23.png"
+image: "/images/blog/25.png"
 excerpt: "Your team is using ChatGPT and similar tools to move faster. The problem is what they paste in to get the result: contracts, client data, financials. Here is how to close the gap without banning AI."
 ---
 
