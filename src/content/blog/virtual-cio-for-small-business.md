@@ -3,7 +3,7 @@ title: "What a Virtual CIO Actually Does for a Small Business (No Jargon)"
 date: 2026-09-19
 category: "IT & MSP"
 tags: ["virtual CIO", "vCIO", "small business", "IT strategy"]
-image: "/images/blog/24.png"
+image: "/images/blog/26.jpg"
 excerpt: "Search \"virtual CIO SMBs\" and you get a dictionary definition. This is the version with a timeline: what happens in the first 90 days, what gets delivered, and what actually changes at the leadership table."
 ---
 
