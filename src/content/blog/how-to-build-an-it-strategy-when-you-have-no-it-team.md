@@ -3,7 +3,7 @@ title: "How to Build an I.T. Strategy When You Have No I.T. Team"
 date: 2026-09-21
 category: "IT & MSP"
 tags: ["it strategy", "budgeting", "risk management", "smb"]
-image: "/images/blog/26.jpg"
+image: "/images/blog/27.jpg"
 excerpt: "Somewhere in your job description, a sentence like \"oversee I.T.\" got added without anyone asking if you had the background for it."
 ---
 
