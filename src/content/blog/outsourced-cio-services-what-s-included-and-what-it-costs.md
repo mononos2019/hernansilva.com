@@ -3,7 +3,7 @@ title: "Outsourced CIO Services: What's Included and What It Costs"
 date: 2026-09-22
 category: "IT & MSP"
 tags: ["outsourced cio", "it budgeting", "vendor management", "smb"]
-image: "/images/blog/27.jpg"
+image: "/images/blog/28.jpg"
 excerpt: "If you searched \"outsourced CIO services\" and landed here from a CFO's chair, you probably noticed the results are a mess."
 ---
 
