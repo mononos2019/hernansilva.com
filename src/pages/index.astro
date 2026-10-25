@@ -76,7 +76,7 @@ const schema = {
       <div class="post-grid">
         {posts.map((post) => (
           <div class="post-card fade-in">
-            <a href={`/blog/${post.slug}`} class="post-link">
+            <a href={`/blog/${post.id}`} class="post-link">
               <img class="post-img" src={post.data.image} alt={post.data.title} loading="lazy" />
               <div class="post-body">
                 <div class="post-tag">{post.data.category}</div>

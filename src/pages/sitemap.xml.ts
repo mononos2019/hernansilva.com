@@ -12,7 +12,7 @@ export async function GET(context: APIContext) {
     ...posts
       .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
       .map((p) => ({
-        loc: new URL(`/blog/${p.slug}/`, base).href,
+        loc: new URL(`/blog/${p.id}/`, base).href,
         lastmod: p.data.date.toISOString().slice(0, 10),
       })),
   ];

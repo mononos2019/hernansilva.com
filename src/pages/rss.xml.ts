@@ -12,7 +12,7 @@ export async function GET(context: APIContext) {
 
   const items = posts
     .map((p) => {
-      const url = new URL(`/blog/${p.slug}/`, base).href;
+      const url = new URL(`/blog/${p.id}/`, base).href;
       return `    <item>
       <title>${esc(p.data.title)}</title>
       <link>${url}</link>
