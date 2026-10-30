@@ -4,6 +4,7 @@ date: 2026-10-30
 category: "AI & Automation"
 tags: ["AI", "data privacy", "legal", "AI policy"]
 image: "/images/blog/32.png"
+imagePosition: "center top"
 excerpt: "Free and paid AI tools are not treated the same in a lawsuit, and a paid personal plan sits closer to the free one than most owners expect."
 ---
 
@@ -23,18 +24,9 @@ Retention adds a second problem. OpenAI says deleted chats on its consumer plans
 
 Business and enterprise plans carry negotiated terms: no training on your data, confidentiality commitments, admin controls, and set retention periods. Law firms who have written about Heppner say these tools likely offer stronger protection. No court has confirmed that, so I do not call them safe.
 
-Here is an example of how a litigation request about this topic can look:
+Watch an example of how a litigation request about this topic can look:
 
-<div style="position:relative;width:100%;max-width:720px;aspect-ratio:16/9;margin:1.5rem 0;">
-  <iframe
-    src="https://www.youtube.com/embed/nG2oxh0KjxM"
-    title="Example of a litigation request about AI chats"
-    style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:8px;"
-    loading="lazy"
-    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen></iframe>
-</div>
+<p style="margin:1.5rem 0;"><a href="https://www.youtube.com/watch?v=nG2oxh0KjxM" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:0.75rem 1.25rem;background:#102A43;color:#ffffff;border-radius:8px;text-decoration:none;font-weight:600;">&#9654; Watch the example video on YouTube</a></p>
 
 Here is what I tell business owners:
 

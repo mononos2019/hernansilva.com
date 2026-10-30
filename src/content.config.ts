@@ -9,6 +9,7 @@ const blog = defineCollection({
     category: z.enum(['AI & Automation', 'IT & MSP', 'Personal']),
     tags: z.array(z.string()).default([]),
     image: z.string(),
+    imagePosition: z.string().optional(),
     excerpt: z.string(),
     draft: z.boolean().default(false),
   }),

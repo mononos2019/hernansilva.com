@@ -33,7 +33,7 @@ const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'shor
         {posts.map((post) => (
           <div class="post-card" data-category={post.data.category}>
             <a href={`/blog/${post.id}`} class="post-link">
-              <img class="post-img" src={post.data.image} alt={post.data.title} loading="lazy" />
+              <img class="post-img" src={post.data.image} alt={post.data.title} loading="lazy" style={post.data.imagePosition ? `object-position:${post.data.imagePosition}` : undefined} />
               <div class="post-body">
                 <div class="post-tag">{post.data.category}</div>
                 <div class="post-title">{post.data.title}</div>
