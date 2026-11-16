@@ -9,6 +9,8 @@ export async function GET(context: APIContext) {
   const entries = [
     { loc: new URL('/', base).href, lastmod: today },
     { loc: new URL('/blog/', base).href, lastmod: today },
+    { loc: new URL('/news/', base).href, lastmod: today },
+    { loc: new URL('/certifications/', base).href, lastmod: today },
     ...posts
       .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
       .map((p) => ({
