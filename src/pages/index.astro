@@ -1,12 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import topHtml from '../_sections/home-top.html?raw';
+import { imageSize, blogThumb, optimizedSrc } from '../lib/images';
+import topHtmlRaw from '../_sections/home-top.html?raw';
 import contactHtml from '../_sections/home-contact.html?raw';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
+
+// Point the story photos at their build-time optimized copies (falls back to the originals)
+const topHtml = ['/images/buenos-aires.jpg', '/images/chicago.jpg'].reduce(
+  (html, src) => html.replaceAll(`src="${src}"`, `src="${optimizedSrc(src)}"`),
+  topHtmlRaw,
+);
 
 const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 
@@ -32,8 +39,8 @@ const schema = {
       "knowsLanguage": ["Spanish", "English"],
       "nationality": "Argentine",
       "sameAs": [
-        "https://www.linkedin.com/in/hernansilva",
-        "https://twitter.com/hernansilva",
+        "https://www.linkedin.com/in/hernanpablosilva/",
+        "https://x.com/hernansilva",
         "https://www.instagram.com/cio.hernansilva"
       ]
     },
@@ -74,10 +81,12 @@ const schema = {
         Short pieces on AI and automation, IT and managed services, and the occasional personal reflection.
       </p>
       <div class="post-grid">
-        {posts.map((post) => (
+        {posts.map((post) => {
+          const size = imageSize(post.data.image);
+          return (
           <div class="post-card fade-in">
             <a href={`/blog/${post.id}`} class="post-link">
-              <img class="post-img" src={post.data.image} alt={post.data.title} loading="lazy" style={post.data.imagePosition ? `object-position:${post.data.imagePosition}` : undefined} />
+              <img class="post-img" src={blogThumb(post.data.image)} alt={post.data.title} width={size?.width} height={size?.height} loading="lazy" decoding="async" style={post.data.imagePosition ? `object-position:${post.data.imagePosition}` : undefined} />
               <div class="post-body">
                 <div class="post-tag">{post.data.category}</div>
                 <div class="post-title">{post.data.title}</div>
@@ -86,7 +95,8 @@ const schema = {
               </div>
             </a>
           </div>
-        ))}
+          );
+        })}
       </div>
       <div class="latest-foot">
         <a href="/blog" class="btn-text">View all articles &rarr;</a>

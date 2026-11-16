@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { imageSize, blogThumb } from '../../lib/images';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -12,7 +13,7 @@ const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'shor
   <section class="page-head">
     <div class="section-inner">
       <div class="section-eyebrow">Writing</div>
-      <h2 class="section-title">The Blog</h2>
+      <h1 class="section-title">The Blog</h1>
       <p>Short reads on AI and automation, IT and managed services, and the occasional personal reflection.</p>
     </div>
   </section>
@@ -30,10 +31,12 @@ const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'shor
       </div>
 
       <div class="post-grid" id="postGrid">
-        {posts.map((post) => (
+        {posts.map((post, i) => {
+          const size = imageSize(post.data.image);
+          return (
           <div class="post-card" data-category={post.data.category}>
             <a href={`/blog/${post.id}`} class="post-link">
-              <img class="post-img" src={post.data.image} alt={post.data.title} loading="lazy" style={post.data.imagePosition ? `object-position:${post.data.imagePosition}` : undefined} />
+              <img class="post-img" src={blogThumb(post.data.image)} alt={post.data.title} width={size?.width} height={size?.height} loading={i < 3 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" style={post.data.imagePosition ? `object-position:${post.data.imagePosition}` : undefined} />
               <div class="post-body">
                 <div class="post-tag">{post.data.category}</div>
                 <div class="post-title">{post.data.title}</div>
@@ -42,7 +45,8 @@ const fmt = (d) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'shor
               </div>
             </a>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   </section>
